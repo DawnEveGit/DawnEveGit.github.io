@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Homework 3 Forms Practice</title>
+        <link rel="stylesheet" href="HW3.css">
+    </head>
+    <body>
+        <p>
+            <a href="index.html">Back to Github</a>
+        </p>
+        <h1>Homework 3: Forms Practice</h1>
+
+        <!-- Form 1: GET Method -->
+        <h2>GET Form</h2>
+        <form method="get" action="https://cs.converse.edu/CSC235/formecho.php">
+            <label for="get-fullname">Full Name:</label>
+            <input type="text" id="get-fullname" name="fullname"><br>
+
+            <label for="get-password">Password:</label>
+            <input type="password" id="get-password" name="password"><br>
+
+            <label for="get-fav-color">Favorite Color:</label>
+            <select id="get-fav-color" name="favorite_color">
+                <option value="">--Select a Color--</option>
+                <option value="blue">Blue</option>
+                <option value="green">Green</option>
+                <option value="red">Red</option>
+            </select><br>
+
+            <label for="get-quantity">Quantity (Number):</label>
+            <input type="number" id="get-quantity" name="quantity" min="1" max="100" value="1"><br>
+
+            <p>Preferred Contact Method:<br>
+                <input type="radio" id="contact-email" name="contact" value="email">
+                <label for="contact-email">Email</label><br>
+                <input type="radio" id="contact-phone" name="contact" value="phone">
+                <label for="contact-phone">Phone</label><br>
+                <input type="radio" id="contact-mail" name="contact" value="mail">
+                <label for="contact-mail">Mail</label>
+            </p>
+
+            <input type="hidden" name="form-source" value="get-method-submission">
+
+            <input type="submit" value="Submit via GET">
+            <input type="reset" value="Reset GET Form">
+        </form>
+
+        <hr>
+
+        <!-- Form 2: POST Method -->
+        <h2>POST Form</h2>
+        <form method="post" action="https://cs.converse.edu/CSC235/formecho.php">
+            <label for="post-username">Username:</label>
+            <input type="text" id="post-username" name="username"><br>
+
+            <label for="post-dob">Date of Birth:</label>
+            <input type="date" id="post-dob" name="dob" value="2000-01-01"><br>
+
+            <label for="post-browser">Preferred Browser (Datalist):</label>
+            <input list="browsers" id="post-browser" name="browser">
+            <datalist id="browsers">
+                <option value="Chrome">
+                <option value="Firefox">
+                <option value="Safari">
+                <option value="Edge">
+            </datalist><br>
+
+            <p>Select Your Interests:<br>
+                <input type="checkbox" id="interest-coding" name="interests" value="coding">
+                <label for="interest-coding">Coding</label><br>
+                <input type="checkbox" id="interest-design" name="interests" value="design">
+                <label for="interest-design">Design</label><br>
+                <input type="checkbox" id="interest-gaming" name="interests" value="gaming">
+                <label for="interest-gaming">Gaming</label>
+            </p>
+
+            <label for="post-feedback">Feedback / Comments:</label><br>
+            <textarea id="post-feedback" name="feedback" rows="4" cols="50"></textarea><br>
+
+            <input type="hidden" name="form-source" value="post-method-submission">
+
+            <input type="submit" value="Submit via POST">
+            <input type="reset" value="Reset POST Form">
+        </form>
+    </body>
+</html>
