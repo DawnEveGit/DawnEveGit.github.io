@@ -12,3 +12,6 @@ h2#Links { color: slateblue; }
 /* Ancestor (parent) selector */
 div > h2 { color: rgb(96,96,96); }
 
+#get-age {
+    width: 100%; /* Adjust the pixel value to make it as wide as you need */
+}
