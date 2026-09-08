@@ -41,3 +41,30 @@ blockquote {
     border-left: 5px solid #27ae60;
     padding: 10px 20px;
 }
+
+img {
+    width: 50%;
+}
+
+/* Mobile Responsive Adjustments */
+@media screen and (max-width: 768px) {
+    body {
+        margin: 15px 5%; /* Reduces the heavy 10% margins to give text more room */
+    }
+    
+    img {
+        width: 90%; /* Increases image size for mobile viewing */
+        display: block; 
+        margin: 0 auto; /* Centers the images perfectly */
+    }
+    
+    h1 {
+        font-size: 2em; /* Slightly scales down the 2.5em header so it fits on one line */
+    }
+
+    /* Makes navigation links easier to tap with a finger */
+    a {
+        padding: 5px;
+        display: inline-block;
+    }
+}
