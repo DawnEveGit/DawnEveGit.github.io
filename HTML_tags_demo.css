@@ -83,19 +83,58 @@ tr:nth-of-type(4) > td:nth-of-type(3) { vertical-align: bottom; }
 tr:nth-of-type(4) > td:nth-of-type(4) { vertical-align: top; }
 
 /* Borders */
-td { border: thin solid; }
-th { border-width: thin medium thick 2px; 
+.pix_table td { border: thin solid; }
+.pix_table th { border-width: thin medium thick 2px; 
      border-style: dashed dotted double solid; 
      border-color: green blue black red; 
-     border-radius: 30%; }
+     border-radius: 5% / 30%; }
 /* Slash allows specifying horizontal and vertical radii separately */
-tr:first-of-type > th { border-radius: 1% / 30%;  }
+.pix_table tr:first-of-type > th { border-radius: 7px;  }
 
 /* Padding */
 tr:nth-of-type(3) > th:nth-of-type(2) { padding: 0.5em; }
 tr:nth-of-type(3) > th:nth-of-type(3) { padding: 0em 1em; }
 ol.bordered li { border: thin solid black; }
 ol.margined ol > li { margin: 0.5em; background-color: tan; }
+
+/* Margins */
+
+table {
+  margin: 3ex 0 0 0;
+}
+
+/* Table stuff */
+.plain_table {
+  border-collapse: collapse;
+  margin: 0 0 5ex 0;
+}
+
+caption {
+  font-weight: bold;
+  font-size: larger;
+}
+
+.plain_table th, .plain_table td {
+  /*border: thin solid;*/
+  padding: 0.2ex 0.5em;
+}
+
+.plain_table > tbody > tr > td:nth-last-of-type(2) {
+  text-align: center;
+}
+
+.plain_table > tbody > tr:nth-of-type(even) > td {
+  background-color: lightgray;
+}
+
+.plain_table > thead {
+  border-bottom: medium double; 
+}
+
+.left_header {
+  border-right: 2px solid;
+  background-color: white;
+}
 
 body {
   font-family: sans-serif;
@@ -146,18 +185,20 @@ body {
 .grid { 
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 }
+
 /* Fixed, 4 equal columns */
 .fixed_grid {
   grid-template-columns: repeat(4, 25%);
 }
 
-#earth {  /* Grows 2x in both directions */
-  min-width: 400px; /* Force growth beyond original size */
-  min-height: 400px;
-  grid-column: 1 / 3;
-  grid-row: 1 / 3;
+@media screen and (500px <= width) {
+  #earth {  /* Grows 2x in both directions */
+    min-width: 400px; /* Force growth beyond original size */
+    min-height: 400px;
+    grid-column: 1 / 3;
+    grid-row: 1 / 3;
+  }
 }
-
 #Hitchcock { /* triple-high */
   max-height: 600px; 
   min-width: 200px; /* Force growth beyond original size */
@@ -179,5 +220,80 @@ body {
   grid-column-end: 5
 }
 
+/* media-type query: don't bother even trying to print a video */
+@media print {
+  .video {
+    display: none;
+  }
+}
 
+/* Media-properties query */
+@media screen and (700px <= width < 900px) {
+  .fixed_grid {
+    grid-template-columns: 33% 34% 33%;
+  }
 
+  #mole {
+    grid-column: 2 / 4;
+  }
+}
+
+@media screen and (500px < width < 700px) {
+  .fixed_grid {
+    grid-template-columns: repeat(2, 50%);
+  }
+
+  #mole {
+    grid-column: 1 / 3;
+  }
+}
+
+@media screen and (width <= 500px) {
+  .fixed_grid {
+    grid-template-columns: 100%;
+  }
+
+  #mouse {
+    grid-column: 1 / auto;
+  }
+  #mole {
+    grid-column: 1 / auto;
+  }
+}
+
+/* Header and footer, using Flexbox */
+
+html, body {
+  height: 100%; /* Can't grow without limit vertically */
+  margin: 0;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Can't grow without limit vertically */
+}
+
+.content {
+  overflow: auto; /* When there's too much, use a scrollbar */
+}
+
+header, footer {
+  background-color: #49176D; /* Converse purple */
+  color: white;
+  flex: 0 0; /* Don't grow or shrink */
+}
+
+header > h1, footer > p {
+  margin: 0;          /* Use only the space required */
+  padding: 0;
+  text-align: center; /* Center horizontally */
+}
+
+.squares_table {
+  margin-left: 2em;
+}
+
+.style_properties {
+  margin-bottom: 2ex;
+}
